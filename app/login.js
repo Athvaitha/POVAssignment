@@ -8,6 +8,7 @@ import {
   Image,
 } from "react-native";
 import { useRouter } from "expo-router";
+import { setLoginState } from "../utils/auth";
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -15,7 +16,7 @@ export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const validateAndLogin = () => {
+  const validateAndLogin = async () => {
     const emailRegex = /\S+@\S+\.\S+/;
 
     if (!emailRegex.test(email)) {
@@ -28,7 +29,7 @@ export default function LoginScreen() {
       return;
     }
 
-    // If everything is valid → go to Home (Stories Page)
+    await setLoginState(true, email);
     router.replace("/(tabs)/");
   };
 

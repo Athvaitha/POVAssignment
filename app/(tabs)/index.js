@@ -73,7 +73,7 @@ export default function HomeScreen() {
         <Text style={styles.seeAll}>See All →</Text>
       </View>
 
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <View style={styles.newItemsGrid}>
         {products.map((src, i) => (
           <View key={i} style={styles.productCard}>
             <Image source={src} style={styles.productImg} />
@@ -83,7 +83,7 @@ export default function HomeScreen() {
             <Text style={styles.price}>${(i + 1) * 10 + 7}.00</Text>
           </View>
         ))}
-      </ScrollView>
+      </View>
 
       {/* Flash Sale */}
       <View style={styles.flashHeader}>
@@ -134,10 +134,10 @@ const styles = StyleSheet.create({
   storyBox: {
     marginRight: 15,
     position: "relative",
-    width: 80,
-    height: 110,
+    width: 85,
+    height: 140,
   },
-  storyImg: { width: "100%", height: "100%", borderRadius: 12 },
+  storyImg: { width: "100%", height: "100%", borderRadius: 15 },
   liveBadge: {
     position: "absolute",
     top: 5,
@@ -155,14 +155,19 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   seeAll: { color: "#1E63EE", fontWeight: "700" },
+  newItemsGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+  },
   productCard: {
-    width: 150,
-    marginRight: 20,
+    width: "48%",
+    marginBottom: 20,
   },
   productImg: {
     width: "100%",
-    height: 150,
-    borderRadius: 12,
+    height: 180,
+    borderRadius: 15,
   },
   productDesc: { marginTop: 8, fontSize: 14, color: "#444" },
   price: { marginTop: 5, fontSize: 18, fontWeight: "700" },
@@ -180,10 +185,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   flashCard: {
-    width: 150,
-    height: 150,
-    borderRadius: 12,
-    marginRight: 20,
+    width: 120,
+    height: 120,
+    borderRadius: 15,
+    marginRight: 15,
     overflow: "hidden",
     position: "relative",
   },
